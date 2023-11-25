@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --modal-padding-bottom: max(
+    16px,
+    calc(env(safe-area-inset-bottom, 16px) * 3)
+  );
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.no-scrollbars {
+  scrollbar-width: none;
+}
+
+.no-scrollbars::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.input-number-no-buttons {
+  -moz-appearance: textfield;
+}
+
+.input-number-no-buttons::-webkit-outer-spin-button,
+.input-number-no-buttons::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.ReactModal__Overlay {
+  padding-bottom: var(--modal-padding-bottom);
+}
+
+/* Fixes issues with focusing inputs within the `fixed` modal */
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  height: 100%;
+}
+
+.popper-container {
+  background: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  display: none;
+}
+
+.popper-container[data-show] {
+  display: block;
+}
+
+.popper-arrow,
+.popper-arrow::before {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: inherit;
+}
+
+.popper-arrow {
+  visibility: hidden;
+}
+
+.popper-arrow::before {
+  visibility: visible;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.popper-container[data-popper-placement^="top"] > .popper-arrow {
+  bottom: -4px;
+}
+
+.popper-container[data-popper-placement^="bottom"] > .popper-arrow {
+  top: -4px;
+}
+
+.popper-container[data-popper-placement^="left"] > .popper-arrow {
+  right: -4px;
+}
+
+.popper-container[data-popper-placement^="right"] > .popper-arrow {
+  left: -4px;
+}
